@@ -1,8 +1,13 @@
 package com.example.adamcrawford.smsbuddy;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Contacts;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +17,7 @@ import android.widget.ListView;
 public class SMSActivity extends Activity {
 
     private String TAG = "SMSA";
+    EditText to;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,26 +25,74 @@ public class SMSActivity extends Activity {
         setContentView(R.layout.activity_sms);
         this.setTitle(R.string.newMessage);
 
-        EditText to = (EditText) findViewById(R.id.toEdit);
+        to = (EditText) findViewById(R.id.toEdit);
         final EditText msg = (EditText) findViewById(R.id.messageEdit);
         Button send = (Button) findViewById(R.id.sendButton);
         ListView msgList = (ListView) findViewById(R.id.msgList);
+        Button pickButton = (Button) findViewById(R.id.contactsButton);
 
         Bundle intent = getIntent().getExtras();
 
         msg.setText(intent.getString(Intent.EXTRA_TEXT));
 
+        pickButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+                startActivityForResult(intent, 0);
+            }
+        });
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!msg.getText().toString().equals("")) {
-                    Log.i(TAG, msg.getText().toString());
-
+                    if (!to.getText().toString().equals("")) {
+                        Log.i(TAG, msg.getText().toString());
+                    } else {
+                        Log.e(TAG, "To is blank");
+                    }
                 } else {
                     Log.e(TAG, "Message blank");
                 }
             }
         });
+    }
 
+    @Override
+    public void onActivityResult(int reqCode, int resultCode, Intent data){
+        super.onActivityResult(reqCode, resultCode, data);
+
+        switch (reqCode){
+            case 0: {
+                if (resultCode == RESULT_OK){
+                    String name;
+                    String number = "0";
+                    Uri contactData = data.getData();
+                    Cursor c = getContentResolver().query(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
+                        name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                        String id = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
+                        if (Integer.parseInt(c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+                            Cursor p = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+                            while (p.moveToNext()) {
+                                int type = p.getInt(p.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
+                                if (type == ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE) {
+                                    number = p.getString(p.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA));
+                                    number = number.replaceAll("\\s", "");
+                                }
+                            }
+                        }
+                        if (number.equals("0")) {
+                            //TODO Make toast to alert user
+                            Log.i(TAG, "No mobile number found.");
+                        }
+                        Log.i(TAG, String.format("Name: %s, Number: %s", name, number));
+                        to.setText(String.format("%s <%s>", name, number));
+                    }
+                }
+            }
+            break;
+        }
     }
 }

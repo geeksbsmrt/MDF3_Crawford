@@ -6,5 +6,6 @@
     <string name="sendButton">Send</string>
     <string name="toEdit">To:</string>
     <string name="newMessage">New Message</string>
+    <string name="pick">Pick</string>
 
 </resources>

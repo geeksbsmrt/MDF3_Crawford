@@ -9,11 +9,24 @@
     tools:context="com.example.adamcrawford.smsbuddy.SMSActivity"
     android:orientation="vertical">
 
-    <EditText
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/toEdit"
-        android:hint="@string/toEdit"/>
+        android:hint="@string/toEdit"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick"
+        android:id="@+id/contactsButton"/>
+    </LinearLayout>
 
     <ListView
         android:layout_width="fill_parent"
