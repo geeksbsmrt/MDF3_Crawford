@@ -8,11 +8,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Contacts;
 import android.provider.ContactsContract;
+import android.provider.Telephony;
 import android.util.Log;
+import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
 public class SMSActivity extends Activity {
 
@@ -31,9 +36,30 @@ public class SMSActivity extends Activity {
         ListView msgList = (ListView) findViewById(R.id.msgList);
         Button pickButton = (Button) findViewById(R.id.contactsButton);
 
-        Bundle intent = getIntent().getExtras();
+        Intent intent = getIntent();
 
-        msg.setText(intent.getString(Intent.EXTRA_TEXT));
+        Bundle extras = intent.getExtras();
+
+        Uri data = intent.getData();
+
+        if (!(data == null)) {
+            Log.i(TAG, data.getScheme());
+            if (data.getScheme().equals("smsto")) {
+                String msgTo = null;
+                try {
+                    msgTo = URLDecoder.decode(String.valueOf(data).replace("smsto:", ""), "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                Log.i(TAG, msgTo);
+                to.setText(msgTo);
+            }
+        }
+
+        if (!(extras == null)) {
+            msg.setText(extras.getString(Intent.EXTRA_TEXT));
+
+        }
 
         pickButton.setOnClickListener(new View.OnClickListener() {
             @Override

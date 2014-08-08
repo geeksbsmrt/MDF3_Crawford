@@ -7,5 +7,9 @@
     <string name="toEdit">To:</string>
     <string name="newMessage">New Message</string>
     <string name="pick">Pick</string>
+    <string name="SMSDefault">Default SMS</string>
+    <string name="notDefault">SMSBuddy is not the Default SMS Application. To utilize the full functionality, press the Set Default button to set it as the default.</string>
+    <string name="defaultButton">Set Default</string>
+    <string name="defaultCancel">Cancel</string>
 
 </resources>
