@@ -2,8 +2,9 @@
 <resources>
 
     <string name="app_name">SMSBuddy</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_sms">SMSActivity</string>
+    <string name="messageEdit">Type a message…</string>
+    <string name="sendButton">Send</string>
+    <string name="toEdit">To:</string>
+    <string name="newMessage">New Message</string>
 
 </resources>
