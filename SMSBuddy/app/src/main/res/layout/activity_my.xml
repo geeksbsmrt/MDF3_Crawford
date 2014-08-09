@@ -8,5 +8,29 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MyActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/appDesc"
+        android:text="@string/appDesc"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings"
+        android:layout_below="@id/appDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/restrict"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/composeButton"
+        android:text="@string/composeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/settings"/>
 
 </RelativeLayout>

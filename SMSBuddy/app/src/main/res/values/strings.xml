@@ -11,5 +11,8 @@
     <string name="notDefault">SMSBuddy is not the Default SMS Application. To utilize the full functionality, press the Set Default button to set it as the default.</string>
     <string name="defaultButton">Set Default</string>
     <string name="defaultCancel">Cancel</string>
+    <string name="composeButton">Compose Message</string>
+    <string name="appDesc">SMSBuddy when fully functional will be designed to display and manage a list of ongoing conversations, change multiple settings, and serve as a true SMS/MMS application.  For the purposes of this assignment, only the launch of an implicit intent and comparing the to field to a stored list of "restricted" numbers is available.  The "restricted" numbers can be stored so that the user must approve sending to that number.  This will help alleviate texting the incorrect recipient.</string>
+    <string name="restrict">Restricted Numbers</string>
 
 </resources>
