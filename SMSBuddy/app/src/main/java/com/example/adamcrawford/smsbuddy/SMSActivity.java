@@ -2,9 +2,11 @@ package com.example.adamcrawford.smsbuddy;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
@@ -12,19 +14,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.adamcrawford.smsbuddy.restricted.RestrictedConstructor;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Map;
 
 public class SMSActivity extends Activity {
 
     private String TAG = "SMSA";
     EditText to;
+    private static SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sms);
         this.setTitle(R.string.newMessage);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         to = (EditText) findViewById(R.id.toEdit);
         final EditText msg = (EditText) findViewById(R.id.messageEdit);
@@ -68,9 +76,31 @@ public class SMSActivity extends Activity {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Boolean match = false;
                 if (!msg.getText().toString().equals("")) {
                     if (!to.getText().toString().equals("")) {
                         Log.i(TAG, msg.getText().toString());
+                        if (preferences != null) {
+
+                            Map<String, ?> names = preferences.getAll();
+                            Log.i(TAG, names.toString());
+
+                            //loop through array putting member names into string array
+                            for (Map.Entry<String, ?> entry : names.entrySet()) {
+                                Log.i(TAG, (String) entry.getValue());
+                                if (to.getText().toString().toLowerCase().contains(String.valueOf(entry.getValue()).toLowerCase())) {
+                                    //Prompt user
+                                    Log.i(TAG, "match");
+                                    match = true;
+                                } else {
+                                    //send
+                                    Log.i(TAG, "no Match");
+                                }
+                            }
+                        }
+                        if (!match){
+                            Log.i(TAG, "sending message");
+                        }
                     } else {
                         Log.e(TAG, "To is blank");
                     }

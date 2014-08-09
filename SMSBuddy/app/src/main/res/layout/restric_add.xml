@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addName"
+        android:hint="@string/name"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/addName"
+        android:id="@+id/addButton"
+        android:text="@string/add"
+        android:layout_marginTop="10dp"
+        android:textColor="#00ff00"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/defaultCancel"
+        android:id="@+id/addCancel"
+        android:textColor="#ff0000"
+        android:layout_below="@id/addName"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

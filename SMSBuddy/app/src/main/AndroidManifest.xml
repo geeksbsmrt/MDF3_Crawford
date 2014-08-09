@@ -22,6 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".restricted.RestrictedActivity"
+            android:label="@string/restrict">
+
+        </activity>
+
         <activity
             android:name=".SMSActivity"
             android:label="@string/app_name" >
