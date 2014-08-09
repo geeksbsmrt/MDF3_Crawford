@@ -14,8 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.example.adamcrawford.smsbuddy.restricted.RestrictedConstructor;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Map;
