@@ -1,4 +1,4 @@
-package com.example.adamcrawford.vicinityvideos;
+package com.example.adamcrawford.locpic;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
