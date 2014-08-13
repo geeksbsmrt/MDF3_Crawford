@@ -11,15 +11,8 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/start"
-        android:text="start"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/stop"
-        android:text="stop"
-        android:layout_below="@id/start"/>
+        android:text="stop"/>
 
     <SurfaceView
         android:layout_width="fill_parent"
