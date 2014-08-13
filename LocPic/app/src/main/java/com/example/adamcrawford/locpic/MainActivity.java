@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Display;
@@ -15,6 +16,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 
@@ -32,6 +36,16 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button capture = (Button) findViewById(R.id.capture);
+        capture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cam != null){
+                    cam.takePicture(null, null, pictureCallback);
+                }
+            }
+        });
 
         surfaceView = (SurfaceView) findViewById(R.id.camPrev);
         holder = surfaceView.getHolder();
@@ -118,4 +132,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback {
 //            cam = null;
 //        }
     }
+
+    private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+
+        @Override
+        public void onPictureTaken(byte[] data, Camera camera) {
+
+        }
+    };
 }

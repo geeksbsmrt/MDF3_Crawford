@@ -11,14 +11,14 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/stop"
-        android:text="stop"/>
+        android:id="@+id/capture"
+        android:text="@string/capture"/>
 
     <SurfaceView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/camPrev"
-        android:layout_below="@id/stop"/>
+        android:layout_below="@id/capture"/>
     
 
 </RelativeLayout>
