@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,34 +6,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
-    <RelativeLayout android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/capture"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/capture"/>
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/picView"
-            android:layout_below="@id/capture"
-            android:contentDescription="@string/picDesc"/>
-
-    </RelativeLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/save"
-        android:id="@+id/save"
-        android:layout_weight="0"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
-</LinearLayout>
+        android:text="@string/capture"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/capture"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/picView"
+        android:layout_below="@id/capture"
+        android:contentDescription="@string/picDesc"/>
+
+</RelativeLayout>

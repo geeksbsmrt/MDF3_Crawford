@@ -3,4 +3,6 @@
     <string name="capture">Take Picture</string>
     <string name="picDesc">Returned from cam</string>
     <string name="save">Save Image</string>
+    <string name="low">Battery too low, Location disabled.</string>
+    <string name="noStatus">Couldn\'t get battery status</string>
 </resources>
