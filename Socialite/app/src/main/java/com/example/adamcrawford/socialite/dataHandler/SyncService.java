@@ -65,7 +65,7 @@ public class SyncService extends IntentService {
 
         try {
             //build URL from user inputs
-            String loc = "https://www.eventbrite.com/json/event_search?postal_code="+ zipCode +"&within="+ distance +"&within_unit=M&date=Future&max=20&sort_by=date&app_key=MXJ6QL3VZTULJNGDQ5";
+            String loc = "https://www.eventbrite.com/json/event_search?postal_code="+ zipCode +"&within="+ distance +"&within_unit=M&max=100&date=Future&sort_by=date&app_key=MXJ6QL3VZTULJNGDQ5";
             url = new URL(loc);
 
             //create connection

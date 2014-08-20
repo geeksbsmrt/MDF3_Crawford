@@ -42,6 +42,7 @@ public class EventAdapter extends ArrayAdapter<EventConstructor> {
             holder.eventName = (TextView) convertView.findViewById(R.id.eventName);
             holder.eventTime = (TextView) convertView.findViewById(R.id.eventTime);
             holder.eventLocation = (TextView) convertView.findViewById(R.id.eventLocation);
+            holder.eventCity = (TextView) convertView.findViewById(R.id.eventCity);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -50,6 +51,7 @@ public class EventAdapter extends ArrayAdapter<EventConstructor> {
         holder.eventName.setText(event.eventName);
         holder.eventTime.setText(event.eventTime);
         holder.eventLocation.setText(event.eventLocation);
+        holder.eventCity.setText(event.eventCity);
 
         return convertView;
     }
@@ -58,5 +60,6 @@ public class EventAdapter extends ArrayAdapter<EventConstructor> {
         TextView eventName;
         TextView eventTime;
         TextView eventLocation;
+        TextView eventCity;
     }
 }

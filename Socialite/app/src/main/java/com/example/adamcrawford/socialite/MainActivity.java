@@ -73,7 +73,6 @@ public class MainActivity extends Activity {
         ArrayList<EventConstructor> eventNames = new ArrayList<EventConstructor>();
 
         try {
-
             //get events array out of returned JSON object
             JSONArray dataArray = data.getJSONArray("events");
 
@@ -123,7 +122,6 @@ public class MainActivity extends Activity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 } else {
                     Log.i(TAG, "No data");
 
@@ -131,6 +129,5 @@ public class MainActivity extends Activity {
                 }
             }
         }
-
     }
 }

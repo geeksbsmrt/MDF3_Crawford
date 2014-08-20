@@ -14,12 +14,14 @@ public class EventConstructor {
     public String eventName;
     public String eventTime;
     public String eventLocation;
+    public String eventCity;
 
     public EventConstructor(JSONObject event){
         try {
             this.eventName = event.getJSONObject("event").getString("title");
             this.eventTime = event.getJSONObject("event").getString("start_date");
-            this.eventLocation = "test";
+            this.eventLocation = event.getJSONObject("event").getJSONObject("venue").getString("address");
+            this.eventCity = event.getJSONObject("event").getJSONObject("venue").getString("city");
         } catch (JSONException e) {
             e.printStackTrace();
         }

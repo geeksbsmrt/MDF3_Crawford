@@ -3,4 +3,7 @@
     <string name="eventName">eventName</string>
     <string name="eventLocation">eventLocation</string>
     <string name="eventTime">eventTime</string>
+    <string name="eventCity">eventCity</string>
+    <string name="eventState">eventState</string>
+    <string name="eventZip">eventZip</string>
 </resources>
