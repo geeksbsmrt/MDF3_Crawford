@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="60"
+        android:layout_height="wrap_content"
+        android:text="@string/eventName"
+        android:id="@+id/eventName"
+        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical"
+        />
+
+    <RelativeLayout android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="40"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eventTime"
+            android:id="@+id/eventTime"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/eventLocation"
+            android:id="@+id/eventLocation"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/eventTime"/>
+
+    </RelativeLayout>
+</LinearLayout>
