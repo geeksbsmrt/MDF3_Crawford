@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".data.SyncService"/>
+        <service android:name=".dataService.SyncService"/>
     </application>
 
 </manifest>
