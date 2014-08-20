@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.adamcrawford.socialite.dataService.DataStorage;
-import com.example.adamcrawford.socialite.dataService.SyncService;
+import com.example.adamcrawford.socialite.data.DataStorage;
+import com.example.adamcrawford.socialite.data.SyncService;
 import com.example.adamcrawford.socialite.events.EventAdapter;
 import com.example.adamcrawford.socialite.events.EventConstructor;
 
