@@ -18,7 +18,7 @@ public class EventConstructor {
     public EventConstructor(JSONObject event){
         try {
             this.eventName = event.getJSONObject("event").getString("title");
-            this.eventTime = "test";
+            this.eventTime = event.getJSONObject("event").getString("start_date");
             this.eventLocation = "test";
         } catch (JSONException e) {
             e.printStackTrace();
