@@ -83,7 +83,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                     edit.putString("distance", editDistance.getText().toString());
                     edit.apply();
                     getData(editZip.getText().toString(), editDistance.getText().toString());
-                }
+            }
             }
         }
     }
@@ -169,7 +169,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
 
     public void getData(String zipCode, String distance) {
 
-        printToast(String.valueOf(R.string.wait));
+        printToast(getString(R.string.wait));
 
         Intent getJSON = new Intent(this, SyncService.class);
         getJSON.putExtra("zip", zipCode);
