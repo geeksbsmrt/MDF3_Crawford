@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="200dp"
+    android:minHeight="40dp"
+    android:updatePeriodMillis="1800000"
+    android:previewImage="@drawable/doc"
+    android:initialLayout="@layout/layout_widget"
+    android:resizeMode="horizontal"
+    android:configure="com.example.adamcrawford.socialite.WidgetConfig"
+    >
+    <!-- android:updatePeriodMillis="3600000" -->
+</appwidget-provider>

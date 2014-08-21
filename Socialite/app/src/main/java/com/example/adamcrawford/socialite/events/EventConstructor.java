@@ -15,6 +15,7 @@ public class EventConstructor {
     public String eventTime;
     public String eventLocation;
     public String eventCity;
+    public String eventURL;
 
     public EventConstructor(JSONObject event){
         try {
@@ -22,6 +23,7 @@ public class EventConstructor {
             this.eventTime = event.getJSONObject("event").getString("start_date");
             this.eventLocation = event.getJSONObject("event").getJSONObject("venue").getString("address");
             this.eventCity = event.getJSONObject("event").getJSONObject("venue").getString("city");
+            this.eventURL = event.getJSONObject("event").getString("url");
         } catch (JSONException e) {
             e.printStackTrace();
         }

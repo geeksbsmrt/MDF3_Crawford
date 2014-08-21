@@ -23,9 +23,20 @@
         <service android:name=".dataHandler.SyncService" />
 
         <activity
-            android:name=".details.DetailActivity"
-            android:label="@string/title_activity_detail" >
+            android:name=".WidgetConfig"
+            android:label="@string/title_activity_widget_config" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
         </activity>
+        
+        <receiver android:name="com.example.adamcrawford.socialite.EventWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/widget"/>
+        </receiver>
     </application>
 
 </manifest>

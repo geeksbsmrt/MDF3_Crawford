@@ -52,6 +52,7 @@ public class EventAdapter extends ArrayAdapter<EventConstructor> {
         holder.eventTime.setText(event.eventTime);
         holder.eventLocation.setText(event.eventLocation);
         holder.eventCity.setText(event.eventCity);
+        holder.eventUrl = event.eventURL;
 
         return convertView;
     }
@@ -61,5 +62,6 @@ public class EventAdapter extends ArrayAdapter<EventConstructor> {
         TextView eventTime;
         TextView eventLocation;
         TextView eventCity;
+        String eventUrl;
     }
 }

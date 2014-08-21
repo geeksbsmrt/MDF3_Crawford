@@ -3,12 +3,14 @@ package com.example.adamcrawford.socialite;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     static String TAG = "Main Activity";
-    private Context context = this;
+    public Context context = this;
     private ListView eventList;
 
     @Override
@@ -38,7 +40,16 @@ public class MainActivity extends Activity {
 
         eventList = (ListView) findViewById(R.id.eventList);
 
-        getData("33811", "10");
+        eventList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                EventConstructor event = (EventConstructor) eventList.getItemAtPosition(i);
+                Log.i(TAG, event.eventURL);
+
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(event.eventURL));
+                startActivity(webIntent);
+            }
+        });
     }
 
     //method to display error to user
@@ -52,7 +63,7 @@ public class MainActivity extends Activity {
         error.show();
     }
 
-    private void getData(String zipCode, String distance) {
+    public void getData(String zipCode, String distance) {
         Intent getJSON = new Intent(this, SyncService.class);
         getJSON.putExtra("zip", zipCode);
         getJSON.putExtra("distance", distance);
@@ -101,7 +112,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    private static class DataHandler extends Handler {
+    public static class DataHandler extends Handler {
         private final WeakReference<MainActivity> mainActivityWeakReference;
         public DataHandler(MainActivity activity) {
             mainActivityWeakReference = new WeakReference<MainActivity>(activity);

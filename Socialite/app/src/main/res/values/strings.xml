@@ -8,6 +8,10 @@
     <string name="eventCity">eventCity</string>
     <string name="eventState">eventState</string>
     <string name="eventZip">eventZip</string>
-    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_widget_config">Widget Configuration</string>
+    <string name="configWidget">Location Settings</string>
+    <string name="editZip">Zip code</string>
+    <string name="editDistance">Distance</string>
+    <string name="save">Save</string>
 
 </resources>
