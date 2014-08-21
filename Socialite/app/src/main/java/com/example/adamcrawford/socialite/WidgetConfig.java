@@ -126,6 +126,16 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                     }
                 } else {
                     Log.i(TAG, "Null current event");
+                    try {
+                        widgetView.setTextViewText(R.id.widgetEventName, events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getString("title"));
+                        widgetView.setTextViewText(R.id.widgetEventTime, events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getString("start_date"));
+                        widgetView.setTextViewText(R.id.widgetEventCity, events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getJSONObject("venue").getString("city"));
+                        viewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getString("url")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    edit.putInt("currentEventNumber", 1);
+                    edit.apply();
                 }
             } else {
                 Log.i(TAG,"No current event");

@@ -59,8 +59,10 @@ public class EventWidgetProvider extends AppWidgetProvider {
             int currentEventNumber = preferences.getInt("currentEvent", -1);
 
             if (currentEventNumber != -1) {
+                Log.i(TAG, "CEV ! -1");
                 try {
                     currentEventNumber++;
+                    Log.e(TAG, "CEV: " + currentEventNumber);
                     currentEvent = events.getJSONArray("events").getJSONObject(currentEventNumber);
                 } catch (JSONException e) {
                     e.printStackTrace();
