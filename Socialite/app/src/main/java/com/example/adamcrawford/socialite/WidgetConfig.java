@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 import com.example.adamcrawford.socialite.dataHandler.DataStorage;
 import com.example.adamcrawford.socialite.dataHandler.SyncService;
@@ -167,6 +168,9 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
     }
 
     public void getData(String zipCode, String distance) {
+
+        printToast(String.valueOf(R.string.wait));
+
         Intent getJSON = new Intent(this, SyncService.class);
         getJSON.putExtra("zip", zipCode);
         getJSON.putExtra("distance", distance);
@@ -200,5 +204,15 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                 }
             }
         }
+    }
+
+    private void printToast(String message) {
+        //get active context
+        Context c = getApplicationContext();
+        //set length for message to be displayed
+        int duration = Toast.LENGTH_LONG;
+        //create message based on input parameter then display it
+        Toast error = Toast.makeText(c, message, duration);
+        error.show();
     }
 }

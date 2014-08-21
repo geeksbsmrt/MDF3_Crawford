@@ -11,7 +11,8 @@
     <string name="title_activity_widget_config">Widget Configuration</string>
     <string name="configWidget">Location Settings</string>
     <string name="editZip">Zip code</string>
-    <string name="editDistance">Distance</string>
+    <string name="editDistance">Distance (in Miles)</string>
     <string name="save">Save</string>
+    <string name="wait">Fetching latest data from Internet…</string>
 
 </resources>
