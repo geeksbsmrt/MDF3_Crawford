@@ -135,7 +135,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                     widgetView.setTextViewText(R.id.widgetEventCity, events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getJSONObject("venue").getString("city"));
                     viewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getString("url")));
                     edit.putInt("currentEventNumber", 1);
-                    //edit.apply();
+                    edit.apply();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
