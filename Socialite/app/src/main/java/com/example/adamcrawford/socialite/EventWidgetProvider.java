@@ -64,7 +64,7 @@ public class EventWidgetProvider extends AppWidgetProvider {
 
             Log.i(TAG, "events has data");
             JSONObject currentEvent = null;
-            int currentEventNumber = preferences.getInt("currentEvent", -1);
+            int currentEventNumber = preferences.getInt("currentEventNumber", -1);
 
             if (currentEventNumber != -1) {
                 Log.i(TAG, "CEV ! -1");
