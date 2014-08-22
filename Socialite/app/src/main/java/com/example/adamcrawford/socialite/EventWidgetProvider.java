@@ -31,14 +31,8 @@ public class EventWidgetProvider extends AppWidgetProvider {
     String TAG = "EWP";
 
     @Override
-    public void onEnabled(Context context) {
-        super.onEnabled(context);
-        Log.i(TAG, "Enabled");
-    }
-
-    @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-//        super.onUpdate(context, appWidgetManager, appWidgetIds);
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
 
         Log.i(TAG, "Updating Widget");
 
