@@ -6,6 +6,8 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +38,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
     EditText editDistance;
     Context context;
     static RemoteViews widgetView;
-    SharedPreferences.Editor edit;
+    //SharedPreferences.Editor edit;
     Intent viewIntent;
     int widgetID;
 
@@ -58,6 +60,12 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
         widgetView = new RemoteViews((this).getPackageName(), R.layout.layout_widget);
         viewIntent = null;
 
+        if (!getStatus(this)){
+            printToast(getString(R.string.notConnected));
+            String temp = DataStorage.getInstance().readFile(getResources().openRawResource(R.raw.events));
+            DataStorage.getInstance().writeFile("events", temp, context);
+            writeWidget();
+        }
 
         if (preferences.contains("zip")){
             Log.i(TAG, "Contains zip");
@@ -76,20 +84,22 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
 
             if (widgetID != AppWidgetManager.INVALID_APPWIDGET_ID) {
 
-                edit = preferences.edit();
+                SharedPreferences.Editor edit = preferences.edit();
 
                 if (!editZip.getText().toString().equals("") && !editDistance.getText().toString().equals("")){
                     edit.putString("zip", editZip.getText().toString());
                     edit.putString("distance", editDistance.getText().toString());
                     edit.apply();
                     getData(editZip.getText().toString(), editDistance.getText().toString());
-            }
+                }
             }
         }
     }
 
     private void writeWidget(){
         JSONObject events = null;
+
+        SharedPreferences.Editor edit = preferences.edit();
 
         try {
             events = new JSONObject(DataStorage.getInstance().readFile("events", this));
@@ -98,7 +108,6 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
         }
 
         if (events != null) {
-
             Log.i(TAG, events.toString());
 
             if (preferences.contains("currentEventNumber")){
@@ -212,5 +221,16 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
         //create message based on input parameter then display it
         Toast error = Toast.makeText(c, message, duration);
         error.show();
+    }
+
+    public Boolean getStatus(Context c) {
+        Log.i(TAG, "In getStatus");
+
+        //build connectivity manager and network info
+        ConnectivityManager conMan = (ConnectivityManager) c.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = conMan.getActiveNetworkInfo();
+
+        //true/false based on connectivity
+        return netInfo != null && netInfo.isConnected();
     }
 }

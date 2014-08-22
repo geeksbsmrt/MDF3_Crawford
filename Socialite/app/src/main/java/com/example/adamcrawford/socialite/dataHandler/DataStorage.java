@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Author:  Adam Crawford
@@ -46,6 +47,27 @@ public class DataStorage {
         try {
             FileInputStream fis = context.openFileInput(fileName.toLowerCase());
             BufferedInputStream bis = new BufferedInputStream(fis);
+            byte[] contentBytes = new byte[1024];
+            int bytesRead;
+            String content;
+            StringBuffer contentBuffer = new StringBuffer();
+
+            while ((bytesRead = bis.read(contentBytes)) != -1) {
+                content = new String(contentBytes, 0, bytesRead);
+                contentBuffer.append(content);
+            }
+            //Log.i("Data Storage", String.valueOf(contentBuffer));
+            return String.valueOf(contentBuffer);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    public String readFile (InputStream stream){
+        try {
+            BufferedInputStream bis = new BufferedInputStream(stream);
             byte[] contentBytes = new byte[1024];
             int bytesRead;
             String content;

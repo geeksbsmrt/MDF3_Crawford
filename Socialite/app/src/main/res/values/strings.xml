@@ -14,5 +14,6 @@
     <string name="editDistance">Distance (in Miles)</string>
     <string name="save">Save</string>
     <string name="wait">Fetching latest data from Internet…</string>
+    <string name="notConnected">You must be connected for latest data. Using sample.</string>
 
 </resources>

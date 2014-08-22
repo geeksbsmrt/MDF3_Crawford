@@ -16,6 +16,8 @@ import com.example.adamcrawford.socialite.dataHandler.DataStorage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+
 /**
  * Author:  Adam Crawford
  * Project: Socialite
@@ -46,11 +48,16 @@ public class EventWidgetProvider extends AppWidgetProvider {
         Intent viewIntent = null;
         SharedPreferences.Editor edit = preferences.edit();
 
-        try {
-            events = new JSONObject(DataStorage.getInstance().readFile("events", context));
-            Log.i(TAG, events.toString());
-        } catch (JSONException e) {
-            Log.e(TAG, e.getMessage());
+        File eventsFile = new File("events");
+
+        if (eventsFile.exists()) {
+
+            try {
+                events = new JSONObject(DataStorage.getInstance().readFile("events", context));
+                Log.i(TAG, events.toString());
+            } catch (JSONException e) {
+                Log.e(TAG, e.getMessage());
+            }
         }
 
         if (events != null) {
