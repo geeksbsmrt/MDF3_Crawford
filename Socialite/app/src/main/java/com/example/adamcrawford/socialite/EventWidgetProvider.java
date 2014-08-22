@@ -45,6 +45,7 @@ public class EventWidgetProvider extends AppWidgetProvider {
         JSONObject events = null;
         Intent viewIntent = null;
         SharedPreferences.Editor edit = preferences.edit();
+
         try {
             events = new JSONObject(DataStorage.getInstance().readFile("events", context));
             Log.i(TAG, events.toString());
@@ -65,7 +66,7 @@ public class EventWidgetProvider extends AppWidgetProvider {
                     Log.e(TAG, "CEV: " + currentEventNumber);
                     currentEvent = events.getJSONArray("events").getJSONObject(currentEventNumber);
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             }
 
@@ -79,7 +80,7 @@ public class EventWidgetProvider extends AppWidgetProvider {
                     edit.putInt("currentEventNumber", currentEventNumber);
                     edit.apply();
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             } else {
                 Log.i(TAG, "Null current event");
@@ -97,5 +98,11 @@ public class EventWidgetProvider extends AppWidgetProvider {
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         super.onDeleted(context, appWidgetIds);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor edit = preferences.edit();
+
+        edit.clear();
+        edit.commit();
     }
 }

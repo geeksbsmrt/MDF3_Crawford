@@ -94,7 +94,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
         try {
             events = new JSONObject(DataStorage.getInstance().readFile("events", this));
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage());
         }
 
         if (events != null) {
@@ -110,7 +110,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                     try {
                         currentEvent = events.getJSONArray("events").getJSONObject(currentEventNumber);
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, e.getMessage());
                     }
                 }
 
@@ -123,7 +123,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                         viewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentEvent.getJSONObject("event").getString("url")));
 
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, e.getMessage());
                     }
                 } else {
                     Log.i(TAG, "Null current event");
@@ -133,7 +133,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                         widgetView.setTextViewText(R.id.widgetEventCity, events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getJSONObject("venue").getString("city"));
                         viewIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(events.getJSONArray("events").getJSONObject(1).getJSONObject("event").getString("url")));
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        Log.e(TAG, e.getMessage());
                     }
                     edit.putInt("currentEventNumber", 1);
                     edit.apply();
@@ -148,7 +148,7 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                     edit.putInt("currentEventNumber", 1);
                     edit.apply();
                 } catch (JSONException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             }
         }
