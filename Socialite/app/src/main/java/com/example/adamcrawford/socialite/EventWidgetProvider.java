@@ -41,6 +41,7 @@ public class EventWidgetProvider extends AppWidgetProvider {
         widgetView = new RemoteViews(context.getPackageName(), R.layout.layout_widget);
         viewIntent = null;
 
+
         Bundle extras = intent.getExtras();
 
         if (extras != null) {
