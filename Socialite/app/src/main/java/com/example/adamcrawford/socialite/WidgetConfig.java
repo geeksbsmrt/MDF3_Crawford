@@ -38,7 +38,6 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
     EditText editDistance;
     Context context;
     static RemoteViews widgetView;
-    //SharedPreferences.Editor edit;
     Intent viewIntent;
     int widgetID;
 
