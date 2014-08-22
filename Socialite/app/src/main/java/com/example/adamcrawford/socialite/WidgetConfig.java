@@ -199,8 +199,6 @@ public class WidgetConfig extends Activity implements View.OnClickListener {
                     activity.writeWidget();
                 } else {
                     Log.i(TAG, "No data");
-
-                    //activity.printToast(activity.getString(R.string.notFound));
                 }
             }
         }
