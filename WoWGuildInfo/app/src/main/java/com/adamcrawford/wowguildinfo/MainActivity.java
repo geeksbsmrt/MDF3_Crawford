@@ -1,4 +1,4 @@
-package com.adamcrawford.wowguildmembers;
+package com.adamcrawford.wowguildinfo;
 
 import android.app.Activity;
 import android.os.Bundle;
