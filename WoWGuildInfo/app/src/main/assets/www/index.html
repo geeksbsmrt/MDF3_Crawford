@@ -19,15 +19,21 @@
             </select>
 
             <label for="realmName" class="select">Realm:</label>
-            <select name="realmName" id="realmName" data-mini="true" data-inline="true" data-native-menu="false"></select>
+            <select name="realmName" id="realmName" data-mini="true" data-inline="true" data-native-menu="false">
+                <option ></option>
+                <option value="llane">Llane</option>
+                <option value="winterhoof">Winterhoof</option>
+            </select>
 
             <fieldset name="charLookup" id="charLookup">
-            <label for="test">Test</label><input type="text" id="test" name="fName" data-mini="true" class="required" />
+                <label for="cName">Character Name</label><input type="text" id="cName" name="gName" data-mini="true" class="required" />
             </fieldset>
 
             <fieldset name="guildLookup" id="guildLookup">
-
+                <label for="gName">Guild Name</label><input type="text" id="gName" name="gName" data-mini="true" class="required" />
             </fieldset>
+
+            <input type="submit" value="Submit" id="submitButton" data-mini="true" data-theme="b" />
         </form>
     </section>
 </section>
