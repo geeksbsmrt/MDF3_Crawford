@@ -1,4 +1,4 @@
-package com.adamcrawford.wowguildinfo;
+package com.adamcrawford.wowinfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -53,11 +53,6 @@ public class MainActivity extends Activity {
         // Instantiate the interface and set the context
         JavaScriptInterface(Context c) {
             mContext = c;
-        }
-
-        @JavascriptInterface
-        public void logMessage(String string){
-            Log.i("Android", string);
         }
 
         @JavascriptInterface

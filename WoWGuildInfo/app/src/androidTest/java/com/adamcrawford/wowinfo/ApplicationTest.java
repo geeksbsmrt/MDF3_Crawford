@@ -1,4 +1,4 @@
-package com.adamcrawford.wowguildinfo;
+package com.adamcrawford.wowinfo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
