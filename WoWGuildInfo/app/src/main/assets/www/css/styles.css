@@ -8,9 +8,19 @@
     -webkit-background-size: cover;
     -webkit-filter: blur(10px);
 }
+
 .ui-page {
     background: transparent;
 }
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{
+
+}
 .ui-content{
     background: transparent;
+}
+.ui-mobile label, div.ui-controlgroup-label {
+	font-size: 24px;
+	font-weight: 900;
+	color: white;
+	text-shadow: 0 2px #000000;
 }
