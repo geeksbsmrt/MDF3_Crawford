@@ -34,9 +34,7 @@ public class MainActivity extends Activity {
             webSettings.setAllowFileAccessFromFileURLs(true);
         }
 
-        if (savedInstanceState != null) {
-            webView.restoreState(savedInstanceState);
-        } else {
+        if (savedInstanceState == null) {
             webView.loadUrl("file:///android_asset/www/index.html");
         }
     }
@@ -46,6 +44,12 @@ public class MainActivity extends Activity {
         super.onSaveInstanceState(outState);
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore the state of the WebView
+        webView.restoreState(savedInstanceState);
+    }
     public class JavaScriptInterface {
         Context mContext;
 

@@ -1,6 +1,12 @@
+var type;
 $("#home").on('pageshow', function() {
-    var type;
-	$('fieldset').hide();
+    if (type === "char") {
+        $("#charLookup").show();
+    } else if (type === "guild") {
+        $("#guildLookup").show();
+    } else {
+        $('fieldset').hide();
+    };
 	$("#lookupType").change(function () {
 	    var display = $("#lookupType option:selected").val();
         if (display === "charLookup") {
